@@ -1,0 +1,4 @@
+#!/bin/bash
+
+clear
+gcc source/*.c source/*/*.c dependencies/*/*.o -Iinclude/ -Idependencies/ -o ./bin/run -Werror -Wpedantic -lGL -lglfw
