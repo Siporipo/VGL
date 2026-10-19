@@ -18,10 +18,6 @@
 
 #include "VGL.h"
 
-// Preprocessor macros
-#define VGL_EXIT_FAILURE 0
-#define VGL_EXIT_SUCCESS 1
-
 // Structs
 typedef struct VGL_Window {
 	int width, height;
@@ -35,3 +31,22 @@ typedef struct VGL_Monitor {
 	int width, height;
 	int x, y;
 } VGL_Monitor;
+
+
+typedef struct VGL_VBO {
+	GLuint handle;
+	int vertex_count;
+} VGL_VBO;
+
+typedef struct VGL_VAO {
+	GLuint handle;
+	int vertex_count;
+} VGL_VAO;
+
+typedef struct VGL_Shader {
+	GLuint handle;
+} VGL_Shader;
+
+typedef struct VGL_ShaderProgram {
+	GLuint handle;
+} VGL_ShaderProgram;

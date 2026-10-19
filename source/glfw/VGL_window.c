@@ -26,8 +26,8 @@ VGL_Window* VGL_CreateWindow(
 ) {
 //	VGL_ParseWindowHints(flags);
 
-	GLFWwindow* ptr;
-	if (!window_reference || !window_reference->handle) {
+	GLFWwindow* ptr = NULL;
+	if (!VGL_WindowAlive(window_reference)) {
 		ptr = glfwCreateWindow(width, height, title, NULL, NULL);
 	} else {
 		ptr = glfwCreateWindow(width, height, title, NULL, window_reference->handle);
@@ -46,7 +46,9 @@ VGL_Window* VGL_CreateWindow(
 		.handle=ptr
 	};
 	
-	VGL_GLInit(window);
+	if (!VGL_GLInit(window)) {
+		return NULL;
+	}
 	glfwSwapInterval(1);
 
 	return window;
@@ -111,7 +113,7 @@ int VGL_GetWindowHeight(VGL_Window* window) {
 char* VGL_GetWindowTitle(VGL_Window* window) {
 	if (!VGL_WindowAlive(window)) {
 		fprintf(stderr, "VGL:GLFW - Passed a NULL window pointer for dereferencing!\n");
-		return VGL_EXIT_FAILURE;
+		return NULL;
 	}
 	return window->title;
 }
