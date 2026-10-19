@@ -1,4 +1,6 @@
 #include "VGL.h"
+#include <stdio.h>
+#include <math.h>
 
 int main() {
 	if (!VGL_Init()) return -1;
@@ -7,7 +9,7 @@ int main() {
 
 	while (!VGL_WindowShouldClose(window1)) {
 		VGL_UpdateWindow(window1);
-		VGL_PollEvents();
+		VGL_UpdateGLFW();
 	}
 
 	VGL_Quit();

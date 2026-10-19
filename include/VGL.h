@@ -16,6 +16,11 @@ void VGL_Quit();
 int VGL_GLFWInit();
 void VGL_GLFWTerminate();
 
+float VGL_GetTime();
+void VGL_SetTime(float t);
+void VGL_UpdateGLFW();
+float VGL_GetFPS();
+
 VGL_Monitor* VGL_GetMonitor();
 int VGL_GetMonitorWidth(VGL_Monitor* monitor);
 int VGL_GetMonitorHeight(VGL_Monitor* monitor);
