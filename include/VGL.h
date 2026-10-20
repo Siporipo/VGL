@@ -22,8 +22,14 @@ typedef struct VGL_Window  VGL_Window;
 
 typedef struct VGL_VAO VGL_VAO;
 typedef struct VGL_VBO VGL_VBO;
+typedef struct VGL_EBO VGL_EBO;
 typedef struct VGL_ShaderProgram VGL_ShaderProgram;
 typedef struct VGL_Shader        VGL_Shader;
+
+// Typedefs
+typedef uint32_t VGL_WindowHint;
+typedef uint32_t VGL_ShaderType;
+typedef uint32_t VGL_Index;
 
 // Master
 int VGL_Init();
@@ -58,11 +64,17 @@ char* VGL_GetWindowTitle(VGL_Window* window);
 
 // OpenGL
 int VGL_GLInit(VGL_Window* window);
+
 void VGL_GLAttachContext(VGL_Window* window);
 void VGL_GLClearContext(float r, float g, float b, float a);
+void VGL_GLDrawVAO(VGL_VAO* VAO, VGL_ShaderProgram* program, VGL_EBO* EBO);
 
 VGL_VAO* VGL_GLNewVAO();
-VGL_VBO* VGL_GLNewVBO(VGL_VAO* VAO, float* vertices, int vertex_count, int* attribs, int attrib_count);
+VGL_VBO* VGL_GLNewVBO(float* vertices, int vertex_count, int vertex_stride);
+int VGL_GLAddVBO(VGL_VAO* VAO, VGL_VBO* VBO, int* attribs, int attrib_count);
+VGL_EBO* VGL_GLNewEBO(VGL_Index* indices, int index_count);
+int VGL_GLAddEBO(VGL_VAO* VAO, VGL_EBO* EBO);
+
 VGL_Shader* VGL_GLCompileShader(const char* code, uint32_t VGL_SHADER_TYPE);
 VGL_ShaderProgram* VGL_GLLinkShader(VGL_Shader** shaders, int shader_count);
-void VGL_GLDrawVAO(VGL_VAO* VAO, VGL_ShaderProgram* program);
+VGL_Shader* VGL_GLLoadShader(const char* path, VGL_ShaderType shader_type);

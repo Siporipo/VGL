@@ -38,6 +38,11 @@ typedef struct VGL_VBO {
 	int vertex_count;
 } VGL_VBO;
 
+typedef struct VGL_EBO {
+	GLuint handle;
+	int index_count;
+} VGL_EBO;
+
 typedef struct VGL_VAO {
 	GLuint handle;
 	int vertex_count;
@@ -50,3 +55,6 @@ typedef struct VGL_Shader {
 typedef struct VGL_ShaderProgram {
 	GLuint handle;
 } VGL_ShaderProgram;
+
+// Externs
+extern int VGL_WINDOW_COUNT;

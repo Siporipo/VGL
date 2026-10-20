@@ -64,6 +64,7 @@ VGL_Window* VGL_DestroyWindow(VGL_Window* window) {
 	glfwDestroyWindow(window->handle);
 	window->handle = NULL;
 	gc_free(window);
+	VGL_WINDOW_COUNT--;
 	return NULL;
 }
 
